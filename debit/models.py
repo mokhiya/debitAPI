@@ -17,5 +17,12 @@ class DebitModel(models.Model):
     loan_type = models.CharField(max_length=10, choices=LOAN_TYPE_CHOICES)
     is_closed = models.BooleanField(default=False)
 
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
     def __str__(self):
         return f"{self.user.username} - {self.get_loan_type_display()} - {self.amount}"
+
+    class Meta:
+        verbose_name_plural = "Debits"
+        verbose_name = "Debit"
